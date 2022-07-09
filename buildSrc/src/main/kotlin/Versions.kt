@@ -3,7 +3,7 @@ object Versions {
     const val compileSDK = 32
     const val minsdk = 21
     const val targetsdk = 32
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.7.10"
     const val ktx = "1.7.0"
     const val kotlin_coroutines = "1.6.3"
 

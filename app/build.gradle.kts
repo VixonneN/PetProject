@@ -8,7 +8,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("kotlin-parcelize")
 }
 
 android {
@@ -75,6 +74,9 @@ dependencies {
     implementation(Dependencies.android_appcompat)
     implementation(Dependencies.material)
     implementation(Dependencies.fragment_ktx)
+
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
