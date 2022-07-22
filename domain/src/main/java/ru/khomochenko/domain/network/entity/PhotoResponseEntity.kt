@@ -16,9 +16,9 @@ data class UserEntity(
     val username: String,
     val firstName: String,
     val lastName: String?,
-    val bio: String,
+    val bio: String?,
     val profileImage: ProfileImageEntity,
-    val instagramUserName: String
+    val instagramUserName: String?
 )
 
 data class ProfileImageEntity(

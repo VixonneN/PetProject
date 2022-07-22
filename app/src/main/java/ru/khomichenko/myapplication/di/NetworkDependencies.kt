@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkDependencies {
 
-    private const val BASE_URL = "https://api.themotivate365.com/"
+    private const val BASE_URL = "https://api.unsplash.com/"
 
     @Singleton
     @Provides
