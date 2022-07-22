@@ -8,6 +8,7 @@ data class PhotoResponseEntity(
 )
 
 data class UrlsEntity(
+    val full: String,
     val thumb: String
 )
 

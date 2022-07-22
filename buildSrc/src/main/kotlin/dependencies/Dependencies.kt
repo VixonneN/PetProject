@@ -31,6 +31,7 @@ object Dependencies {
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glide_compose = "com.github.skydoves:landscapist-glide:${Versions.glide_compose}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
     const val coil_compose = "io.coil-kt:coil-compose:${Versions.coil}"
 
     const val android_core_ktx = "androidx.core:core-ktx:${Versions.ktx}"

@@ -13,7 +13,7 @@ fun PhotoResponseDTO.toEntity(): PhotoResponseEntity =
     PhotoResponseEntity(id, urls.toEntity(), user.toEntity(), likes)
 
 fun UrlsDTO.toEntity(): UrlsEntity =
-    UrlsEntity(thumb)
+    UrlsEntity(full, thumb)
 
 fun UserDTO.toEntity(): UserEntity =
     UserEntity(id, username, firstName, lastName, bio, profileImage.toEntity(), instagramUserName)

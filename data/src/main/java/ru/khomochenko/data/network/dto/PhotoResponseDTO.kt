@@ -10,6 +10,7 @@ data class PhotoResponseDTO(
 )
 
 data class UrlsDTO(
+    val full: String,
     val thumb: String
 )
 

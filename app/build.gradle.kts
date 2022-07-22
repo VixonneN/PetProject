@@ -50,6 +50,9 @@ android {
 
 dependencies {
 
+    //images
+    implementation(Dependencies.coil)
+
     //room
     implementation(Dependencies.room_runtime)
     kapt(AnnotationProcessing.room_compiler)
@@ -70,6 +73,7 @@ dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.lifecycle_runtime)
 
+    //android
     implementation(Dependencies.android_core_ktx)
     implementation(Dependencies.android_appcompat)
     implementation(Dependencies.material)

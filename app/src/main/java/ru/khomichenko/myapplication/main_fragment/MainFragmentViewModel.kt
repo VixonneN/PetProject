@@ -20,7 +20,7 @@ class MainFragmentViewModel @Inject constructor(
     private val _networkState = MutableStateFlow<MainFragmentState>(MainFragmentState.Loading)
     val networkState = _networkState.asStateFlow()
 
-    private val _data = MutableStateFlow<PhotoResponseEntity?>(null)
+    private val _data = MutableStateFlow<List<PhotoResponseEntity>>(emptyList())
     val data = _data.asStateFlow()
 
     fun loadPhotos() {
@@ -31,7 +31,7 @@ class MainFragmentViewModel @Inject constructor(
                         _networkState.value = MainFragmentState.Loading
                     }
                     is Response.Success -> {
-                        val response = state._data as PhotoResponseEntity
+                        val response = state._data as List<PhotoResponseEntity>
                         _data.value = response
                         _networkState.value = MainFragmentState.Success
                     }

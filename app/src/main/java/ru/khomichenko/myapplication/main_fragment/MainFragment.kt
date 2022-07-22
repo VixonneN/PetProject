@@ -14,6 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.khomichenko.myapplication.R
 import ru.khomichenko.myapplication.databinding.FragmentMainBinding
+import ru.khomichenko.myapplication.main_fragment.recycler.ListImages
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -43,9 +44,28 @@ class MainFragment : Fragment() {
                         }
                         is MainFragmentState.Success -> {
                             binding.progressCircular.visibility = View.INVISIBLE
+                            initializeList()
                         }
                         is MainFragmentState.Error -> {
                             binding.progressCircular.visibility = View.INVISIBLE
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initializeList() {
+        binding.apply {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.data.collect { item ->
+                        item.let {
+                            listImages.apply {
+                                val imagesAdapter = ListImages()
+                                imagesAdapter.submitList(item)
+                                adapter = imagesAdapter
+                            }
                         }
                     }
                 }
