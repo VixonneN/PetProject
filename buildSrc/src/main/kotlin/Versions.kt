@@ -28,4 +28,8 @@ object Versions {
     const val nav_version = "2.4.2"
     const val compose_hilt_nav = "1.0.0"
     const val accompanist = "0.23.1"
+
+    const val junit = "4.13.2"
+    const val android_junit = "1.1.3"
+    const val android_espresso = "3.4.0"
 }

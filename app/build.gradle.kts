@@ -4,10 +4,10 @@ import dependencies.Java
 import dependencies.AnnotationProcessing
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id(Plugins.application)
+    id(Plugins.kotlin)
+    id(Plugins.kapt)
+    id(Plugins.dagger)
 }
 
 android {
@@ -20,8 +20,7 @@ android {
         versionCode = Application.version_code
         versionName = Application.version_name
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        viewBinding.isEnabled = true
+        testInstrumentationRunner = Test.testInstrumentals
     }
 
     buildTypes {
@@ -34,17 +33,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
     }
+
     kotlinOptions {
         jvmTarget = Java.java_versions
     }
+
     packagingOptions {
         resources {
             resources.excludes.add("META-INF/AL2.0")
             resources.excludes.add("META-INF/LGPL2.1")
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -67,7 +71,7 @@ dependencies {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.converter_gson)
     implementation(Dependencies.okhttp)
-    implementation(Dependencies.okhttp_login_interceptor)
+    debugImplementation(Dependencies.okhttp_login_interceptor)
 
     //coroutines
     implementation(Dependencies.coroutines)
@@ -79,10 +83,12 @@ dependencies {
     implementation(Dependencies.material)
     implementation(Dependencies.fragment_ktx)
 
+    //modules
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    //tests
+    testImplementation(Test.unit_junit)
+    androidTestImplementation(Test.android_junit)
+    androidTestImplementation(Test.android_espresso)
 }

@@ -1,21 +1,22 @@
 import dependencies.Dependencies
 import dependencies.AnnotationProcessing
+import dependencies.Java
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id(Plugins.library)
+    id(Plugins.kotlin)
+    id(Plugins.kapt)
+    id(Plugins.dagger)
 }
 
 android {
-    compileSdk = 32
+    compileSdk = Versions.compileSDK
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = Versions.minsdk
+        targetSdk = Versions.targetsdk
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Test.testInstrumentals
     }
 
     buildTypes {
@@ -26,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Java.java_versions
     }
 }
 
@@ -49,7 +50,9 @@ dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.lifecycle_runtime)
 
+    //modules
     implementation(project(Modules.domain))
 
-    testImplementation("junit:junit:4.13.2")
+    //tests
+    testImplementation(Test.unit_junit)
 }
